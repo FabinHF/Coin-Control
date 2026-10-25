@@ -1,0 +1,107 @@
+#entrar-container{
+    display: grid;
+    grid-template-columns: 65% 35%;
+}
+
+.amarelo{
+    color: #ffd700;
+}
+
+#login-form{
+    background: #000000;
+    background: linear-gradient(143deg, rgba(0, 0, 0, 1) 0%, rgba(23, 11, 19, 1) 40%, rgba(84, 44, 22, 1) 74%, rgba(232, 167, 69, 1) 100%);
+    border-left: 2px solid #f8f1cf;
+    text-align: left;
+    font-size: larger;
+    padding: 2rem;
+    color: #f8f1cf;
+}
+
+#voltar{
+    color: #f8f1cf;
+    text-decoration: underline;
+}
+
+form{
+    margin-top: 20%;
+}
+
+.campo{
+    width: 100%;
+    align-items: left;
+    border-bottom: 1px solid #777;
+    margin-bottom: 30px;
+    padding-bottom:0.5% ;
+}
+
+.campo input{
+    background: none;
+    border: none;
+    padding: 0em 1em 0;
+    width: 80%;
+    color: #f8f1cfa2;
+    font-size: medium;
+}
+
+.campo input::placeholder{
+    font-size: medium;
+    color:#f8f1cfa2;
+    transition: 0.2s;
+}
+
+.campo input:focus{
+    outline: none;
+    color: #f8f1cfa2;
+}
+
+.campo input:focus::placeholder{
+    font-size: small;
+}
+
+#lembre-label{
+    color: #f8f1cfa2 ;
+    margin-right: 20%;
+}
+
+#lembre-label input{
+    margin-right: 2%;
+}
+#lembre-label input[type='checkbox']{
+    border: none;
+}
+
+#botao-login{
+    padding: 3% 30%;
+    border-radius: 14px;
+    color:#000000;
+    background-color: #f8f1cf;
+    border: none;
+    font-size: large;
+}
+
+#button-container{
+    text-align: center;
+    margin: 5%;
+}
+
+#entrar-cadastro{
+    color: #f8f1cf;
+    text-align: center;
+}
+
+#entrar-cadastro a{
+    color: #f8f1cf;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: x-large;
+}
+#senha-rec{
+    color: #f8f1cfa2;
+    text-decoration: underline;
+    font-weight:lighter;
+    font-size: medium;
+}
+
+#margem-senha{
+    text-align: center;
+}

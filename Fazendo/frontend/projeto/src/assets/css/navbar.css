@@ -1,0 +1,125 @@
+.navbar{
+    border:2px solid #F8F1CF;
+    background-color: #170b13;
+    border-radius: 86px;
+    display:grid;
+    grid-template-columns: 25% 50% 25%;
+    column-gap: 0.2%;
+    height: 4em;
+}
+
+.logo{
+    height: 3.5em;
+    width: auto;
+    margin-left: 1em;
+}
+
+#nav-logo{
+    padding : 0.28em 0em 0em 1em;
+    place-items: center;
+}
+
+#nav-links{
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(6, auto);
+    padding-bottom: 2.3em;
+}
+
+#nav-links h3{
+    color: #ffffff;
+    font-size: 1.2em;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.2em 0.5em;
+    transition: background-color 0.3s ease;
+}
+
+#nav-links h3:hover{
+    background-color: #e2e2df4b;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+span{
+    color: #FFD700;
+}
+
+#nav-logins{
+    display: flex;
+    justify-content: right;
+    padding-right: 2em;
+    gap: 1em;
+    color: #FFD700;
+}
+
+#nav-foto-user{
+    margin-top: 0.4em;
+}
+
+#nav-links-deslogado{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(2, auto);
+    padding-bottom: 2.3em;
+    gap: 5em;
+}
+
+#nav-links-deslogado h3{
+    color: #ffffff;
+    font-size: 1.2em;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.2em 0.5em;
+    transition: background-color 0.3s ease;
+}
+
+#nav-links-deslogado h3:hover{
+    background-color: #e2e2df4b;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+#nav-logins-deslogado{
+    display: flex;
+    justify-content: right;
+    text-decoration: none;
+    padding-right: 2em;
+    padding-top: 0.7em;
+    gap: 1em;
+    margin:0;
+}
+
+#nav-entrar{
+    color: #FFFFFF;
+    border: 2px solid #f8f1cf;
+    border-radius: 10px;
+    text-decoration: none;
+    padding: 0.4em;
+    margin:0;
+    transition: background-color 0.6s ease;
+}
+
+#nav-entrar:hover{
+    color: #170b13;
+    border: 2px solid #f8f1cf;
+    background-color: #f8f1cf;
+}
+
+#nav-cadastrar{
+    color: #170b13;
+    background-color: #f8f1cf;
+    border-radius: 10px;
+    text-decoration:none;
+    padding: 0.5em;
+    margin:0;
+    transition: background-color 0.6s ease;
+}
+
+#nav-cadastrar:hover{
+    color: #f8f1cf;
+    border: 2px solid #f8f1cf;
+    padding: 0.4em;
+    background-color: #170b13;
+}

@@ -1,0 +1,20 @@
+html{
+  font-family:arial, sans-serif;
+  background: #170B13;
+  background: radial-gradient(circle,rgba(23, 11, 19, 1) 57%, rgba(48, 22, 27, 1) 75%, rgba(57, 28, 33, 1) 100%);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-width:100vh;
+}
+
+#root{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main{
+  flex: 1;
+}

@@ -1,0 +1,59 @@
+body{
+    color: #f8f8cf;
+    text-align: center;
+}
+
+.negrito{
+    font-weight: bold;
+    color: #f8f8cf;
+}
+
+#donos{
+    margin-top: 5rem;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+}
+#fabio{
+    color: #1a97bd;
+}
+
+#fabio-img{
+    height: 50%;
+    border-radius: 20px;
+}
+
+#henrique{
+    color: #3faf4e;
+}
+
+#henrique-img{
+    height: 50%;
+    border-radius: 20px;
+}
+
+.paragrafo-1{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    font-size: 20px;
+}
+
+.img-paragrafo{
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+}
+
+.alinhar-direita{
+    text-align: right;
+    margin-right: 10%;
+}
+.alinhar-esquerda{
+    text-align: left;
+    margin-left: 10%;
+
+}
+
+.paragrafo-text{
+    padding: 10%;
+}
