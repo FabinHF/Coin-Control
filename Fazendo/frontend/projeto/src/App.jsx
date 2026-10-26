@@ -3,7 +3,9 @@ import {BrowserRouter, Routes, Route} from 'react-router'
 
 import {useEffect,useState} from 'react'
 
-import PaginaPrincipal from "./pages/PaginaPrincipal"
+import PaginaPrincipalDeslogada from "./pages/PaginaPrincipalDeslogada"
+import PaginaPrincipalLogada from "./pages/PaginaPrincipalLogada"
+
 import Entrar from "./pages/Entrar"
 import Cadastrar from "./pages/Cadastrar"
 import Sobre from "./pages/Sobre"
@@ -21,6 +23,9 @@ function App() {
     },[] )}
 
     verifica_login()
+    console.log(logado)
+    console.log(logado? "a" : "b")
+
 
   return (
     <>
@@ -29,13 +34,14 @@ function App() {
           <Routes>
             {
               logado?
+
               <>
-                <Route path="/" element={<PaginaPrincipal logado={logado} />} />
+                <Route path="/" element={<PaginaPrincipalDeslogada logado={logado} />} />
                 <Route path="/sobre" element={<Sobre logado={true}/>} />
               </>
               :
               <>
-                <Route path="/" element={<PaginaPrincipal logado={logado} />} />
+                <Route path="/" element={<PaginaPrincipalLogada logado={logado} />} />
                 <Route path="/entrar" element={<Entrar />} />
                 <Route path="/cadastrar" element={<Cadastrar />} />
                 <Route path="/sobre" element={<Sobre />} />

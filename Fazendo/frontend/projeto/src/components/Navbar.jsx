@@ -8,9 +8,12 @@ import "../assets/css/navbar.css"
 import {Link} from 'react-router'
 
 function Navbar({logado}) {
+
+    console.log(logado)
+
     return (
         <>
-        
+            
             {
                 logado ? // Navbar para quando o usuário estiver logado
                     <>

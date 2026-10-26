@@ -10,7 +10,7 @@ CORS(app, origins=["http://localhost:5173"])
 @app.route('/verifica_logado')
 def verifica_logado():
     session['logado'] = False
-    logado = ('logado' in session and session['logado'] == True)
+    logado = ('logado' in session and session['logado'] == False)
     return jsonify({'logado':logado})
 
 @app.route('/')
