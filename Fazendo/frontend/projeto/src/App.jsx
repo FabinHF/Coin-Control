@@ -9,6 +9,7 @@ import PaginaPrincipalLogada from "./pages/PaginaPrincipalLogada"
 import Entrar from "./pages/Entrar"
 import Cadastrar from "./pages/Cadastrar"
 import Sobre from "./pages/Sobre"
+import Cursos from "./pages/Cursos"
 
 
 function App() {
@@ -36,12 +37,14 @@ function App() {
               logado?
 
               <>
-                <Route path="/" element={<PaginaPrincipalDeslogada logado={logado} />} />
+                <Route path="/" element={<PaginaPrincipalLogada logado={logado} />} />
                 <Route path="/sobre" element={<Sobre logado={true}/>} />
+                <Route path="/cursos" element={<Cursos logado={true}/>} />
+
               </>
               :
               <>
-                <Route path="/" element={<PaginaPrincipalLogada logado={logado} />} />
+                <Route path="/" element={<PaginaPrincipalDeslogada logado={logado} />} />
                 <Route path="/entrar" element={<Entrar />} />
                 <Route path="/cadastrar" element={<Cadastrar />} />
                 <Route path="/sobre" element={<Sobre />} />
