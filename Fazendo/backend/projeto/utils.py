@@ -6,13 +6,10 @@ PASTA_UPLOAD = '../frontend/projeto/src/assets/img/usuarios'
 
 def criar():
     app = Flask(__name__)
-
-    app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///banco.db'
-
+    app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+mysqlconnector://root:root@localhost:3306/CoinControl"
     app.secret_key='pra usar flash'
 
     db.init_app(app)
-
     with app.app_context():
         db.create_all()
 

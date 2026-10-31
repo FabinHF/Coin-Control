@@ -9,7 +9,6 @@ import PaginaPrincipalLogada from "./pages/PaginaPrincipalLogada"
 import Entrar from "./pages/Entrar"
 import Cadastrar from "./pages/Cadastrar"
 import Sobre from "./pages/Sobre"
-import Cursos from "./pages/Cursos"
 
 
 function App() {
@@ -24,8 +23,6 @@ function App() {
     },[] )}
 
     verifica_login()
-    console.log(logado)
-    console.log(logado? "a" : "b")
 
 
   return (
@@ -39,7 +36,6 @@ function App() {
               <>
                 <Route path="/" element={<PaginaPrincipalLogada logado={logado} />} />
                 <Route path="/sobre" element={<Sobre logado={true}/>} />
-                <Route path="/cursos" element={<Cursos logado={true}/>} />
 
               </>
               :

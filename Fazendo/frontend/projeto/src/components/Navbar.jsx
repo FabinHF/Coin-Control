@@ -9,8 +9,6 @@ import {Link} from 'react-router'
 
 function Navbar({logado}) {
 
-    console.log(logado)
-
     return (
         <>
             

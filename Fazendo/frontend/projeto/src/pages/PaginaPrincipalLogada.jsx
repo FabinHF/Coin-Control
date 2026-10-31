@@ -1,7 +1,6 @@
 import Navbar from "../components/navbar"
 
 function PaginaPrincipal({logado}){
-    console.log(logado)
 
     return(
         <>

@@ -9,7 +9,7 @@ CORS(app, origins=["http://localhost:5173"])
 
 @app.route('/verifica_logado')
 def verifica_logado():
-    session['logado'] = True
+    session['logado'] = False
     logado = ('logado' in session and session['logado'] == True)
     return jsonify({'logado':logado})
 
@@ -17,10 +17,28 @@ def verifica_logado():
 def home():
     return jsonify({'message': 'API is running'})
 
-@app.route("/entrar", methods=['post'])
-def entrar():
-    usuario_entrada = request.json.get('usuario')
-    #usuario = dao.buscar_usuario_login( usuario_entrada['email'])
-    #print(usuario)
 
-    return jsonify({'resposta':"a"})
+@app.route('/cadastrar', methods=['POST'])
+def cadastrar():
+    usuario = request.json.get('novo_usuario')
+    lista_emails = dao.buscar_emails()
+    email = usuario['email']
+    print(lista_emails, email)
+
+    for i in lista_emails:
+        if email != i:
+            pass
+        else:
+            return jsonify({'erro': 'Email já cadastrado. Por favor, use outro email.'})
+
+    nome = usuario['nome']
+    nome_de_usuario = usuario['nome']
+    telefone = usuario['telefone']
+    senha = usuario['senha']
+    imagem = "default_profile_picture.png"
+    resposta = dao.adicionar_usuario(nome, nome_de_usuario, email, telefone, senha, imagem)
+
+    if(resposta):
+        return jsonify({'menssagem': 'Usuário cadastrado com sucesso!', 'redirect': '/entrar'})
+    else:
+        return jsonify({'erro': 'Email já cadastrado. Por favor, use outro email.'})       
