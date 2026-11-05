@@ -1,10 +1,10 @@
-import Navbar from "../components/navbar"
+import Navbar from "../components/Navbar"
 
-function PaginaPrincipal({logado}){
+function PaginaPrincipal({logado, setLogado}) {
 
     return(
         <>
-        <Navbar logado={logado}/>
+        <Navbar logado={logado} setLogado={setLogado}/>
             <h1>Página Principal Logada</h1>
         </>
     )

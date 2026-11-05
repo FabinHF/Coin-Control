@@ -1,22 +1,33 @@
 import capivara from '../assets/img/capivaras/capivara1.png'
 import "../assets/css/entrar.css"
-import {Link} from 'react-router'
+import {Link, useNavigate} from 'react-router-dom'
 import {Eye,Lock} from 'lucide-react'
 import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 function Entrar(){
-    const URL = 'http://127.0.0.1:5000'
+
+    const navigate = useNavigate();
+
+    const URL = 'http://localhost:5000'
+
+    const location = useLocation();
+
+    const mensagem = location.state?.mensagem;
+    const tipo = location.state?.tipo;
+
 
     const[usuario, SetUsuario] = useState({
         "email":"",
-        "senha":""
+        "senha":"",
     })
-    const[msg, SetMsg] = useState("")
+
+    const[lembre, setLembre] = useState(false)
+
+    const[erro, SetErro] = useState("")
 
     function handleChange(e){
         const {name, value} = e.target
-
-        console.log(name,value)
         SetUsuario({
             ...usuario,
             [name]:value
@@ -25,17 +36,28 @@ function Entrar(){
 
     function handleSubmit(e){
         e.preventDefault()
+        
         fetch(`${URL}/entrar`,{
             method: 'POST',
+            credentials: 'include',
             headers:{
                 'Content-Type': "application/json"
             },
-            body: JSON.stringify({'usuario': usuario}) 
+            body: JSON.stringify({'usuario': usuario, "lembre": lembre}) 
         })
         .then( (dados) => dados.json() )
         .then( (dados_resposta) => {
-            SetMsg(dados_resposta.resposta)
+            if("erro" in dados_resposta){
+                SetErro(dados_resposta.erro)
+            }else{
+                navigate(dados_resposta.redirect, {state: {mensagem: dados_resposta.mensagem, tipo: dados_resposta.type}});
+                setErro(mensagem)
+            }
         } )
+        .catch((erro) => {
+            console.error(erro)
+            SetErro("Não foi possível conectar ao servidor.")
+        })
     }
 
     return(
@@ -53,16 +75,23 @@ function Entrar(){
 
                     <div className='campo'>
                         <Eye className='icone' />
-                        <input onChange={handleChange}  type="text" placeholder='Email' name='email' id='email'/>
+                        <input onChange={handleChange}  type="text" placeholder='Email' value={usuario.email} name='email' id='email'/>
                     </div>
 
                     <div className='campo'>
                         <Lock className='icone' />
-                        <input onChange={handleChange}  type="text" placeholder='Senha' name='senha' id='senha' />
+                        <input onChange={handleChange}  type="text" placeholder='Senha' value={usuario.senha} name='senha' id='senha' />
                     </div>
                     <div id='opcoes'>
+                        
+                        {erro &&
+                            <div className='erro'>
+                                {erro}
+                            </div>
+
+                        }
                         <label id='lembre-label' htmlFor="lembre">
-                            <input type="checkbox" name="lembre" id="lembre" />
+                            <input type="checkbox" checked={lembre} onChange={(e) => setLembre(e.target.checked) } name="lembre" id="lembre" />
                             Lembre-se de mim
                         </label>
 

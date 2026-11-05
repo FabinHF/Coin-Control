@@ -1,14 +1,29 @@
 import logo_horizontal from '../assets/img/logos/logo_horizontal.png'
-import fotoUsuario from '../assets/img/usuarios/default_profile_picture.png'
+
+import MenuUsuario from './menu.jsx'
 
 import "../assets/css/navbar.css"
 
+import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 
-import {Link} from 'react-router'
+function Navbar({logado, setLogado}) {
 
-function Navbar({logado}) {
+    const [email, setEmail] = useState('');
 
+    if(logado == true){
+        fetch('http://localhost:5000/busca_email', {
+        credentials: 'include'})
+        .then((dados) => dados.json())
+        .then((dados) => {
+            setEmail(dados.email);
+        })
+        .catch((erro) => {
+            console.error('Erro ao obter email:', erro);
+        });
+    }
+        
     return (
         <>
             
@@ -48,10 +63,7 @@ function Navbar({logado}) {
 
                             {/* Área do Usuário */}
                             <div id='nav-logins' >
-                                <h3>Olá, Usuário</h3>
-                                <Link to='/usuario-config'>
-                                    <img id='nav-foto-user' src={fotoUsuario} alt="Foto do usuário" />
-                                </Link>
+                                <MenuUsuario  email={email} setLogado={setLogado} />
                             </div>
                         </nav>
                     </>

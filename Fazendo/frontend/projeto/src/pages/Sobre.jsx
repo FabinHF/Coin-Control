@@ -1,5 +1,5 @@
 import '../assets/css/sobre.css'
-import Navbar from "../components/navbar"
+import Navbar from "../components/Navbar"
 
 import henrique1 from '../assets/img/sobre/henrique1.jpeg'
 import henrique2 from '../assets/img/sobre/henrique2.jpeg'
@@ -10,10 +10,10 @@ import nois from '../assets/img/sobre/nois1.jpeg'
 
 
 
-function Sobre({logado}){
+function Sobre({logado, setLogado}) {
     return(
         <>
-        <Navbar logado={logado} />
+        <Navbar logado={logado} setLogado={setLogado} />
             <div id='sobre'>
                 <h1>Sobre Nós</h1>
 

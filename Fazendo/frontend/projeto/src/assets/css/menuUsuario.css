@@ -1,0 +1,63 @@
+.menu-usuario {
+    position: relative;
+    display: inline-block;
+}
+
+.opcoes-usuario {
+    position: absolute;
+    right: 0;
+    top: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 180px;
+    background-color: #170b13;
+
+    border: 1px solid #ffd700;
+    border-radius: 8px;
+
+    padding: 10px;
+    z-index: 10;
+}
+
+.opcoes-usuario a,
+.opcoes-usuario button {
+    padding: 10px;
+    text-decoration: none;
+    color: whitesmoke;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.opcoes-usuario a:hover,
+.opcoes-usuario button:hover {
+    background-color: #332518;
+}
+
+#menu-foto-user{
+    margin-top: 0.4em;
+    border-radius: 100%;
+    width: 3em;
+}
+
+#menu-usuario-botao{
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    background-color: #170b1300;
+    border: none;
+    cursor: pointer;
+    vertical-align: middle;
+    color: whitesmoke;
+    padding: 0.5em;
+}
+
+#nome-menu{
+    margin: 0;
+    vertical-align: middle;
+    padding-top: 0.5em;
+}

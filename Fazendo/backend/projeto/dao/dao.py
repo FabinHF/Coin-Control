@@ -14,8 +14,8 @@ class UsuarioDAO:
             db.session.rollback()
             return False
 
-    def buscar_usuario(self,id):
-        return db.session.query(Usuarios).filter_by(id=id).one()
+    def buscar_usuario(self,email):
+        return db.session.query(Usuarios).filter_by(email=email).one()
 
     def remover_usuario(self,usuario):
         db.session.delete(usuario)
@@ -30,9 +30,13 @@ class UsuarioDAO:
         db.session.commit()
 
     def buscar_usuario_login(self,email):
-        return db.session.query(Usuarios).filter_by(email=email).one()
+        return db.session.query(Usuarios.email, Usuarios.senha).filter_by(email=email).one_or_none()
 
     def buscar_emails(self):
         emails = db.session.query(Usuarios.email).all()
         lista_emails = [email[0] for email in emails]
         return lista_emails
+
+    def buscar_imagem_nome(self,email):
+        return db.session.query(Usuarios.imagem, Usuarios.nome_de_usuario).filter_by(email=email).one_or_none()
+        

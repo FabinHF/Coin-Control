@@ -1,11 +1,11 @@
 import capivara from '../assets/img/capivaras/capivara2.png'
 import "../assets/css/cadastrar.css"
-import {Link} from 'react-router'
+import {Link, useNavigate} from 'react-router-dom'
 import {Eye,Lock,Phone,EyeClosed, User} from 'lucide-react'
 import { useState } from 'react'
 
 function Cadastrar(){
-
+    const navigate = useNavigate();
     const[erro, setErro] = useState("");
 
     const[registroUser, setRegistroUser] = useState({
@@ -54,7 +54,7 @@ function Cadastrar(){
                         "senha_confirm": ''
                     });
                 document.getElementById("termos").checked = false;
-                window.location.href = dados_resposta.redirect;
+                navigate(dados_resposta.redirect, {state: {mensagem: dados_resposta.mensagem, tipo: dados_resposta.type}});
                 }
             });
         }
