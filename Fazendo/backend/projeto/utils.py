@@ -1,6 +1,6 @@
 from flask import Flask
 from conexao.db_conection import db
-from dao.dao import UsuarioDAO
+from dao.dao import UsuarioDAO, DespesaDAO, RecebimentoDAO
 
 PASTA_UPLOAD = '../frontend/projeto/src/assets/img/usuarios'
 
@@ -14,8 +14,11 @@ def criar():
         db.create_all()
 
     dao = UsuarioDAO()
+    despesa_dao = DespesaDAO()
+    recebimento_dao = RecebimentoDAO()
 
-    return app, dao
+
+    return app, dao, despesa_dao, recebimento_dao
 
 def upload_de_imagem(imagem):
     import os
