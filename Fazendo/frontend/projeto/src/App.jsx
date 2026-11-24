@@ -9,6 +9,9 @@ import Footer from "./components/Footer"
 import Entrar from "./pages/Entrar"
 import Cadastrar from "./pages/Cadastrar"
 import Sobre from "./pages/Sobre"
+import Planilha from './pages/Planilha'
+import Extrato from './pages/Extrato'
+
 
 
 function App() {
@@ -37,8 +40,9 @@ function App() {
 
               <>
                 <Route path="/" element={<PaginaPrincipalLogada logado={logado} setLogado={setLogado} />} />
-                <Route path="/sobre" element={<Sobre logado={true} setLogado={setLogado}/>} />
-
+                <Route path="/sobre" element={<Sobre logado={logado} setLogado={setLogado}/>} />
+                <Route path='/planilhas' element={<Planilha logado={logado} setLogado={setLogado}/>}/>
+                <Route path='/extrato' element={<Extrato logado={logado} setLogado={setLogado}/>}/>
               </>
               :
               <>
