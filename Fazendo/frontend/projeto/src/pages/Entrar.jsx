@@ -24,7 +24,7 @@ function Entrar(){
 
     const[lembre, setLembre] = useState(false)
 
-    const[erro, SetErro] = useState("")
+    const[erro, setErro] = useState("")
 
     function handleChange(e){
         const {name, value} = e.target
@@ -48,16 +48,12 @@ function Entrar(){
         .then( (dados) => dados.json() )
         .then( (dados_resposta) => {
             if("erro" in dados_resposta){
-                SetErro(dados_resposta.erro)
+                setErro(dados_resposta.erro)
             }else{
                 navigate(dados_resposta.redirect, {state: {mensagem: dados_resposta.mensagem, tipo: dados_resposta.type}});
                 setErro(mensagem)
             }
         } )
-        .catch((erro) => {
-            console.error(erro)
-            SetErro("Não foi possível conectar ao servidor.")
-        })
     }
 
     return(
@@ -85,7 +81,7 @@ function Entrar(){
                     <div id='opcoes'>
                         
                         {erro &&
-                            <div className='erro'>
+                            <div className='erro-mensagem'>
                                 {erro}
                             </div>
 

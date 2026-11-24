@@ -30,7 +30,7 @@ function Footer(){
                     <h2>Atendimento</h2>
 
                     <p>📍 Araraquara - SP</p>
-                    <p>📞 (16) 98767-6767</p>
+                    <p>📞 (16) 90123-4510</p>
                     <p>✉️ coincontrol@gmail.com</p>
                 </div>
             </div>
