@@ -1,6 +1,6 @@
 import logo_horizontal from '../assets/img/logos/logo_horizontal.png'
 
-import MenuUsuario from './menu.jsx'
+import MenuUsuario from './menuUsuario.jsx'
 
 import "../assets/css/navbar.css"
 
@@ -50,8 +50,8 @@ function Navbar({logado, setLogado}) {
                                 <Link to='/planejamento'> 
                                     <h3>Planejamento</h3>
                                 </Link>
-                                <Link to='/historico'> 
-                                    <h3>Histórico</h3>
+                                <Link to='/extrato'> 
+                                    <h3>Extrato</h3>
                                 </Link>
                                 <Link to='/cursos'> 
                                     <h3>Cursos</h3>
