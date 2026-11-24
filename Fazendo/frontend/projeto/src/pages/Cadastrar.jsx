@@ -27,13 +27,12 @@ function Cadastrar(){
     function handleSubmit(e){
         e.preventDefault();
 
-        console.log("a")
-
         if(registroUser.senha !== registroUser.senha_confirm){
             setErro("As senhas não são iguais");
             return;
         }else{
             fetch('http://localhost:5000/cadastrar', {
+                credentials:"include",
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
