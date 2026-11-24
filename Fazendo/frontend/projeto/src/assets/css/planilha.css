@@ -1,0 +1,280 @@
+
+/* PÁGINA */
+
+.pagina-planilha {
+    min-height: 100vh;
+    padding: 30px 20px 60px;
+    box-sizing: border-box;
+}
+
+/* TÍTULO */
+
+.sessao1 {
+    width: 100%;
+    min-height: auto;
+    padding: 20px 15px 35px;
+
+    background: transparent;
+    text-align: center;
+}
+
+.sessao1 h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.3;
+}
+
+.sessao1 h1 span {
+    color: #FFD700;
+}
+
+/* PAINEL CENTRAL */
+
+.painel-planilha {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+
+    padding: 30px;
+    box-sizing: border-box;
+
+    background-color: #FFFFFF;
+    border: 1px solid #E9E1E4;
+    border-radius: 16px;
+
+    box-shadow: 0 5px 25px rgba(56, 33, 43, 0.07);
+}
+
+/* CABEÇALHO */
+
+.sessao2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+    padding: 0 0 25px;
+
+    background: transparent;
+    border-bottom: 1px solid #E9E1E4;
+}
+
+.sessao2-texto h2 {
+    margin: 0 0 5px;
+    color: #38212B;
+    font-size: 25px;
+}
+
+.sessao2-texto p {
+    margin: 0;
+    color: #786B70;
+    font-size: 14px;
+}
+
+.sessao2-botao button {
+    padding: 12px 20px;
+
+    background-color: #FFE34D;
+    color: #38212B;
+
+    border: none;
+    border-radius: 8px;
+
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* FILTROS */
+.filtros {
+padding: 30px 0;
+background: transparent;
+}
+
+.filtros form {
+margin-top: 0;
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+column-gap: 25px;
+row-gap: 22px;
+padding: 0;
+background: transparent;
+border: none;
+border-radius: 0;
+box-shadow: none;
+
+}
+
+/* CAMPOS */
+.filtro-campo {
+display: flex;
+flex-direction: column;
+gap: 9px;
+min-width: 0;
+}
+
+.filtro-campo label {
+font-size: 14px;
+font-weight: 600;
+color: #38212B;
+}
+
+.filtro-campo input,
+.filtro-campo select {
+width: 100%;
+height: 42px;
+padding: 0 12px;
+box-sizing: border-box;
+
+background-color: #FCFAF7;
+color: #38212B;
+
+border: 1px solid #D9CDD2;
+border-radius: 7px;
+
+font-family: inherit;
+font-size: 14px;
+outline: none;
+transition: border-color 0.2s, box-shadow 0.2s;
+
+}
+
+.filtro-campo input,
+.filtro-campo select {
+border-color: #9B6378;
+box-shadow: 0 0 0 3px rgba(155, 99, 120, 0.10);
+}
+
+/* BOTÃO BUSCAR */
+.filtros form > button {
+grid-column: 1 / -1;
+justify-self: end;
+
+width: 140px;
+height: 42px;
+margin: 0;
+padding: 0 20px;
+
+background-color: #38212B;
+color: #FFE34D;
+
+border: none;
+border-radius: 8px;
+
+font-size: 14px;
+font-weight: 600;
+cursor: pointer;
+transition: background-color 0.2s;
+
+}
+
+.filtros form > button {
+background-color: #563342;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 800px) {
+.filtros form {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+}
+
+@media (max-width: 550px) {
+.filtros form {
+grid-template-columns: 1fr;
+}
+
+.filtros form > button {
+    width: 100%;
+}
+
+}
+
+/* TABELA */
+
+.tabela-despesas {
+    margin-top: 10px;
+    border-top: 1px solid #E9E1E4;
+    padding-top: 25px;
+}
+
+.tabela-cabecalho h3 {
+    margin: 0 0 18px;
+    color: #38212B;
+    font-size: 19px;
+}
+
+.tabela-scroll {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #E9E1E4;
+    border-radius: 9px;
+}
+
+.tabela-despesas table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.tabela-despesas th {
+    padding: 14px;
+    background-color: #F3ECEE;
+
+    color: #38212B;
+    font-size: 13px;
+    text-align: left;
+}
+
+.tabela-despesas td {
+    padding: 14px;
+    color: #38212B;
+    font-size: 13px;
+
+    border-top: 1px solid #EEE7E9;
+}
+
+.tabela-despesas tbody tr:hover {
+    background-color: #FCFAF7;
+}
+
+.tabela-vazia {
+    text-align: center;
+    color: #786B70 !important;
+    padding: 35px !important;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 800px) {
+    .filtros form {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .pagina-planilha {
+        padding: 20px 12px 40px;
+    }
+
+    .painel-planilha {
+        padding: 20px 15px;
+    }
+
+    .sessao2 {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .sessao2-botao button {
+        width: 100%;
+    }
+
+    .filtros form {
+        grid-template-columns: 1fr;
+    }
+
+    .filtros form > button {
+        width: 100%;
+    }
+}

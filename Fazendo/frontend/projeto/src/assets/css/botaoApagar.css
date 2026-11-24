@@ -1,0 +1,237 @@
+
+/* ================================
+FUNDO DO MODAL
+================================ */
+
+.modal-overlay-apagar {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    box-sizing: border-box;
+
+    background-color: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+
+    z-index: 9999;
+}
+/* ================================
+JANELA DO MODAL
+================================ */
+
+.modal-conteudo {
+    position: relative;
+
+    width: 100%;
+    max-width: 650px;
+    max-height: 90vh;
+
+    overflow-y: auto;
+    box-sizing: border-box;
+
+    padding: 35px 40px;
+
+    background-color: #38212B;
+    color: #F5EAD6;
+
+    border-radius: 14px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+
+    animation: aparecer 0.25s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   BOTÃO FECHAR
+================================ */
+
+.modal-fechar {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+
+    background: none;
+    border: none;
+
+    color: #F5EAD6;
+    font-size: 30px;
+
+    cursor: pointer;
+}
+
+.modal-fechar:hover {
+    color: #FFE34D;
+}
+
+/* ================================
+   TÍTULOS
+================================ */
+
+.modal-conteudo h2,
+.formulario-lancamento h3 {
+    color: #F5EAD6;
+
+    font-size: 22px;
+    font-weight: 600;
+
+    margin: 0 0 20px;
+}
+
+.modal-conteudo > p {
+    color: #F5EAD6;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* ================================
+   ESCOLHA DESPESA / RECEBIMENTO
+================================ */
+
+.escolha-lancamento-apagar {
+    display: flex;
+    gap: 18px;
+    margin-top: 30px;
+}
+
+.botao-apagar {
+    flex: 1;
+
+    padding: 22px 15px;
+
+    background-color: #e00000;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 10px;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.botao-cancelar {
+    flex: 1;
+
+    padding: 22px 15px;
+
+    background-color: #b3b3b3;
+    color: #000000;
+
+    border: none;
+    border-radius: 10px;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.botao-apagar:hover {
+    background-color: #a80000;
+}
+
+.botao-cancelar:hover {
+    background-color: #d4d4d4;
+    color: rgb(0, 0, 0);
+}
+
+/* ================================
+BOTÃO VOLTAR
+================================ */
+
+.voltar-modal {
+    background: none;
+    border: none;
+
+    color: #FFE34D;
+
+    font-size: 15px;
+    cursor: pointer;
+
+    margin-bottom: 20px;
+}
+
+.voltar-modal:hover {
+    text-decoration: underline;
+}
+
+
+/* ================================
+   BOTÃO SALVAR
+================================ */
+
+.botao-modal-apagar {
+    width: 50%;
+    min-width: 180px;
+    height: 45px;
+
+    margin: 20px auto 0;
+
+    background-color: #e60000;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 9px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.botao-modal-apagar:hover {
+    background-color: #b40000;
+    transform: translateY(-2px);
+}
+
+.botao-modal-apagar:active {
+    transform: scale(0.98);
+}
+
+/* ================================
+   RESPONSIVIDADE
+================================ */
+
+@media (max-width: 600px) {
+
+    .modal-conteudo {
+        padding: 30px 20px;
+        max-height: 90vh;
+    }
+
+    .modal-conteudo h2,
+    .formulario-lancamento h3 {
+        font-size: 19px;
+    }
+
+    .escolha-lancamento {
+        flex-direction: column;
+    }
+
+    .escolha-lancamento button {
+        padding: 18px;
+    }
+
+    .botao-salvar {
+        width: 100%;
+    }
+}

@@ -105,3 +105,7 @@ form{
 #margem-senha{
     text-align: center;
 }
+
+.erro-mensagem{
+    color: rgba(255, 0, 0, 0.795);
+}

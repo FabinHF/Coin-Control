@@ -3,6 +3,10 @@ body{
     text-align: center;
 }
 
+#sobre h1:first-child{
+    font-size: 50px;
+}
+
 .negrito{
     font-weight: bold;
     color: #f8f8cf;

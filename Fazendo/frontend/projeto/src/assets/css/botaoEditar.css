@@ -1,0 +1,33 @@
+
+/* 
+=====================================================================================
+BOTAO EDITAR
+=====================================================================================
+*/
+.botao-editar{
+    background-color: #FFD700;
+    padding: 0.6em 1.1em;
+    font-weight: bold;
+    color: #170b13;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.botao-editar:hover{
+    background-color: rgb(255, 235, 119);
+}
+
+/* 
+=====================================================================================
+CAMPO BOTÕES
+=====================================================================================
+*/
+
+.escolha-editar {
+    display: flex;
+    gap: 18px;
+    margin-top: 30px;
+}
