@@ -19,11 +19,14 @@ function Planilha({ logado, setLogado }) {
     
 
     const [filtros, setFiltros] = useState({
-        categoria: '',
-        dataInicio: '',
-        dataFim: '',
-        descricao: '',
-        pagamento: ''
+        "descricao": '',
+        "categoria": '',
+        "dataInicio": '',
+        "dataFim": '',
+        "metodo_de_pagamento": '',
+        "pago":"",
+        "valor_min":"",
+        "valor_max":""
     });
 
     useEffect(() => {
@@ -57,12 +60,23 @@ function Planilha({ logado, setLogado }) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(filtros)
+            body: JSON.stringify({"filtros":filtros})
         })
-        .then((resposta) => {resposta.json()})
-        .then((dados) => {
-            setDespesas(dados.uniao_despesas);
+        .then((dados) => dados.json())
+        .then((dados_resposta) => {
+            setDespesas(dados_resposta.uniao_despesas);
         });
+
+        setFiltros({
+            "descricao": '',
+            "categoria": '',
+            "dataInicio": '',
+            "dataFim": '',
+            "metodo_de_pagamento": '',
+            "pago":"",
+            "valor_min":"",
+            "valor_max":""
+        })
     }
 
 return (
@@ -101,40 +115,7 @@ return (
 
                 <section className="filtros-extrato">
                     <form onSubmit={buscarDespesas}>
-                
-                        <div className="filtro-extrato-campo">
-                            <label htmlFor="categoria">Categoria:</label>
-                            <input
-                                type="text"
-                                id="categoria"
-                                name="categoria"
-                                value={filtros.categoria}
-                                onChange={alterarFiltro}
-                            />
-                        </div>
-                
-                        <div className="filtro-extrato-campo">
-                            <label htmlFor="data-inicio">Data de início:</label>
-                            <input
-                                type="date"
-                                id="data-inicio"
-                                name="dataInicio"
-                                value={filtros.dataInicio}
-                                onChange={alterarFiltro}
-                            />
-                        </div>
-                
-                        <div className="filtro-extrato-campo">
-                            <label htmlFor="data-fim">Data de fim:</label>
-                            <input
-                                type="date"
-                                id="data-fim"
-                                name="dataFim"
-                                value={filtros.dataFim}
-                                onChange={alterarFiltro}
-                            />
-                        </div>
-                
+                        
                         <div className="filtro-extrato-campo">
                             <label htmlFor="descricao">Descrição:</label>
                             <input
@@ -147,22 +128,120 @@ return (
                         </div>
                 
                         <div className="filtro-extrato-campo">
-                            <label htmlFor="pagamento">Método de pagamento:</label>
+                            <label htmlFor="categoria">Categoria:</label>
+                            <select value={filtros.categoria} onChange={alterarFiltro} name="categoria">
+                                <option value="">
+                                    Todos
+                                </option>
+
+                                <option value="salario">Salário</option>
+                                <option value="renda_extra">Renda Extra</option>
+                                <option value="lucros_dividendos">Lucros e dividendos</option>
+                                <option value="mandatorio">Mandatório</option>
+                                <option value="objetivos_curtos">Objetivos Curtos</option>
+                                <option value="objetivos_medios">Objetivos Médios</option>
+                                <option value="objetivos_longos">Objetivos Longos</option>
+                                <option value="evolucao">Evolução Pessoal</option>
+                                <option value="lazer">Lazer</option>
+                                <option value="reserva_emergencia">Reserva de Emergência</option>
+                            </select>
+                        </div>
+                
+                        <div className="filtro-extrato-campo">
+                            <label htmlFor="dataInicio">Data inicial:</label>
+                            <input
+                                type="date"
+                                id="dataInicio"
+                                name="dataInicio"
+                                value={filtros.dataInicio}
+                                onChange={alterarFiltro}
+                                max={filtros.dataFim}
+                            />
+                        </div>
+                
+                        <div className="filtro-extrato-campo">
+                            <label htmlFor="dataFim">Data final:</label>
+                            <input
+                                type="date"
+                                id="dataFim"
+                                name="dataFim"
+                                value={filtros.dataFim}
+                                onChange={alterarFiltro}
+                                min={filtros.dataInicio}
+                            />
+                        </div>
+                
+                
+                        <div className="filtro-extrato-campo">
+                            <label htmlFor="metodo_de_pagamento">Método de pagamento:</label>
                             <select
-                                id="pagamento"
-                                name="pagamento"
+                                id="metodo_de_pagamento"
+                                name="metodo_de_pagamento"
                                 value={filtros.pagamento}
                                 onChange={alterarFiltro}
                             >
-                                <option value="">Escolha um método</option>
+                                <option value="">
+                                    Todos
+                                </option>
+                                
+                                <option value="pix">Pix</option>
                                 <option value="debito">Débito</option>
                                 <option value="credito">Crédito</option>
-                                <option value="pix">Pix</option>
                                 <option value="dinheiro">Dinheiro</option>
                                 <option value="boleto">Boleto</option>
                                 <option value="cheque">Cheque</option>
+                                <option value="transferencia">Transferência</option>
+                                <option value="deposito">Depósito</option>
                                 <option value="outros">Outros</option>
                             </select>
+                        </div>
+                        <div className="filtro-extrato-campo">
+                            <label htmlFor="pago">Status Pagamento:</label>
+                            <select 
+                                name="pago" 
+                                onChange={alterarFiltro} 
+                                value={filtros.pago}
+                                id="pago"
+                            >
+                                <option value="">
+                                    Todos
+                                </option>
+
+                                <option value="sim">Pago</option>
+                                <option value="nao">Não pago</option>
+                            </select>
+                        </div>
+
+                        <div className="filtro-extrato-campo">
+                            <label htmlFor="valor_min">
+                                Valor Mínimo:
+                            </label>
+                            <input 
+                                type="number" 
+                                value={filtros.valor_min}
+                                onChange={alterarFiltro}
+                                name="valor_min" 
+                                id="valor_min"
+                                placeholder='sem valor mínimo' 
+                                step="0.1"
+                                min="0"
+                                max={filtros.valor_max}
+                            />
+                        </div>
+                        <div className="filtro-extrato-campo">
+                            <label htmlFor="valor_max">
+                                Valor Máximo
+                            </label>
+                            <input 
+                                type="number" 
+                                value={filtros.valor_max}
+                                onChange={alterarFiltro}
+                                name="valor_max" 
+                                id="valor_max"
+                                placeholder='sem valor máximo' 
+                                step="0.1"
+                                min={filtros.valor_min}
+                            />
                         </div>
                 
                         <button type="submit">Buscar</button>

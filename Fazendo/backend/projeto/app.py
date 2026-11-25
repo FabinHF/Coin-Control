@@ -144,13 +144,25 @@ def planilha():
 def buscar_por_filtro():
     email = session.get('usuario')
     filtros = request.json.get('filtros')
+
+    categorias_despesas = {"mandatorio":"Mandatório","objetivos_curtos":"Objetivos Curtos","objetivos_medios":"Objetivos Médios","objetivos_longos":"Objetivos Longos","evolucao":"Evolução","lazer":"Lazer","reserva_emergencia":"Reserva de Emergência"}
+    categorias_recebimentos = {"salario":"Salário","renda_extra":"Renda Extra","lucros_dividendos":"Lucros e Dividendos"}
+
+    metodos_despesas = {"pix":"PIX","dinheiro":"Dinheiro","debito":"Débito","credito":"Crédito","transferencia":"Transferência","outros":"Outros"}
+    metodos_recebimentos = {"pix":"PIX","dinheiro":"Dinheiro","transferencia":"Transferência","deposito":"Depósito","outros":"Outros"}
+
     lista_filtros = {}
 
     for i in filtros:
         if filtros[i] == '':
             pass
         else:
-            lista_filtros[i] = filtros[i]
+            if(i == "pago" and filtros[i] == "sim"):
+                lista_filtros[i] = True
+            elif(i == "pago" and filtros[i] == "nao"):
+                lista_filtros[i] = False
+            else:
+                lista_filtros[i] = filtros[i]
 
 
     despesas = despesa_dao.buscar_despesas_por_filtro(email, lista_filtros)
@@ -164,10 +176,10 @@ def buscar_por_filtro():
             'id': despesa.id,
             'tipo': 'despesa',
             'descricao': despesa.descricao,
-            'categoria': despesa.categoria,
+            'categoria': categorias_despesas[despesa.categoria],
             'valor': despesa.valor,
-            'data': despesa.data.strftime('%d/%m/%Y'),
-            'pagamento': despesa.pagamento,
+            'data': despesa.data,
+            'metodo_de_pagamento': metodos_despesas[despesa.metodo_de_pagamento],
             'pago': despesa.pago
         })
 
@@ -176,18 +188,23 @@ def buscar_por_filtro():
             'id': recebimento.id,
             'tipo': 'recebimento',
             'descricao': recebimento.descricao,
-            'categoria': recebimento.categoria,
+            'categoria': categorias_recebimentos[recebimento.categoria],
             'valor': recebimento.valor,
-            'data': recebimento.data.strftime('%d/%m/%Y'),
-            'pagamento': recebimento.pagamento,
+            'data': recebimento.data,
+            'metodo_de_pagamento': metodos_recebimentos[recebimento.metodo_de_pagamento],
             'pago': recebimento.pago
         })
 
     uniao_despesas = lista_despesas + lista_recebimentos
     uniao_despesas.sort(key=lambda x: x['data'], reverse=True)
-    
 
-    return jsonify({'uniao_despesas': uniao_despesas})
+    for i,v in enumerate(uniao_despesas):
+        v['data'] = v['data'].strftime("%d/%m/%Y")
+        v['id_lista'] = i
+
+    #print(uniao_despesas)
+    
+    return jsonify({"uniao_despesas":uniao_despesas})
 
 
 @app.route("/adicionar_despesa", methods=['POST'])
