@@ -143,7 +143,7 @@ background: transparent;
 .filtros-extrato form {
 margin-top: 0;
 display: grid;
-grid-template-columns: repeat(3, minmax(0, 1fr));
+grid-template-columns: repeat(4, minmax(0, 1fr));
 column-gap: 25px;
 row-gap: 22px;
 padding: 0;

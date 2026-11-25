@@ -22,7 +22,7 @@
 #nav-links{
     display: grid;
     place-items: center;
-    grid-template-columns: repeat(6, auto);
+    grid-template-columns: repeat(4, auto);
     padding-bottom: 2.3em;
 }
 
@@ -41,7 +41,8 @@
     text-decoration: none;
 }
 
-span{
+#nav-links span,
+#nav-links-deslogado span{
     color: #FFD700;
 }
 

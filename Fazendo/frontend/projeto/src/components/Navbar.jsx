@@ -4,12 +4,13 @@ import MenuUsuario from './menuUsuario.jsx'
 
 import "../assets/css/navbar.css"
 
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react'
 
 
 function Navbar({logado, setLogado}) {
 
+    const location = useLocation()
     const [email, setEmail] = useState('');
 
     if(logado == true){
@@ -41,23 +42,34 @@ function Navbar({logado, setLogado}) {
 
                             {/* Área dos links */}
                             <div id='nav-links' >
+                                <Link to='/planilhas'>
+                                    {location.pathname == "/planilhas"?
+                                        <h3><span>Planilhas</span></h3>
+                                    :
+                                        <h3>Planilhas</h3>
+                                    }
+
+                                </Link>
                                 <Link to='/'> 
-                                    <h3><span>Início</span></h3>
-                                </Link>
-                                <Link to='/planilhas'> 
-                                    <h3>Planilhas</h3>
-                                </Link>
-                                <Link to='/planejamento'> 
-                                    <h3>Planejamento</h3>
-                                </Link>
-                                <Link to='/extrato'> 
-                                    <h3>Extrato</h3>
+                                    {location.pathname == "/"?
+                                        <h3><span>Extrato</span></h3>
+                                    :
+                                        <h3>Extrato</h3>
+                                    }
                                 </Link>
                                 <Link to='/cursos'> 
-                                    <h3>Cursos</h3>
+                                    {location.pathname == "/cursos"?
+                                        <h3><span>Cursos</span></h3>
+                                    :
+                                        <h3>Cursos</h3>
+                                    }
                                 </Link>
                                 <Link to='/sobre'> 
-                                    <h3>Sobre</h3>
+                                    {location.pathname == "/sobre"?
+                                        <h3><span>Sobre nós</span></h3>
+                                    :
+                                        <h3>Sobre nós</h3>
+                                    }
                                 </Link>
                             </div>
 
@@ -81,10 +93,18 @@ function Navbar({logado, setLogado}) {
                             {/* Área dos links */}
                             <div id='nav-links-deslogado' >
                                 <Link to='/'> 
-                                    <h3><span>Início</span></h3>
+                                    {location.pathname == "/"?
+                                        <h3><span>Início</span></h3>
+                                    :
+                                        <h3>Início</h3>
+                                    }
                                 </Link>
-                                <Link to='/Sobre'> 
-                                    <h3>Sobre</h3>
+                                <Link to='/sobre'> 
+                                    {location.pathname == "/sobre"?
+                                        <h3><span>Sobre nós</span></h3>
+                                    :
+                                        <h3>Sobre nós</h3>
+                                    }
                                 </Link>
                             </div>
                             

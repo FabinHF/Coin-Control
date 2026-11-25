@@ -39,10 +39,9 @@ function App() {
               logado?
 
               <>
-                <Route path="/" element={<PaginaPrincipalLogada logado={logado} setLogado={setLogado} />} />
                 <Route path="/sobre" element={<Sobre logado={logado} setLogado={setLogado}/>} />
                 <Route path='/planilhas' element={<Planilha logado={logado} setLogado={setLogado}/>}/>
-                <Route path='/extrato' element={<Extrato logado={logado} setLogado={setLogado}/>}/>
+                <Route path='/' element={<Extrato logado={logado} setLogado={setLogado}/>}/>
               </>
               :
               <>
